@@ -1,7 +1,7 @@
 import React from 'react';
 
-const SuperHeroes = () => {
+const SuperHeroesPage = () => {
   return <div>SuperHeroes</div>;
 };
 
-export default SuperHeroes;
+export default SuperHeroesPage;
