@@ -33,7 +33,7 @@ const SuperHeroesPage = () => {
 
   return (
     <>
-      <h2>Super Heroes Page</h2>
+      <h2>Super Heroes</h2>
       {data.map((hero: Hero) => {
         return <div key={hero.name}>{hero.name}</div>;
       })}

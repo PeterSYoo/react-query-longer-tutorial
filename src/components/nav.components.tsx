@@ -13,7 +13,7 @@ const Nav = () => {
             <Link to="/super-heroes">Traditional Super Heroes</Link>
           </li>
           <li>
-            <Link to="/rq-super-heroes">RQ Super Heroes</Link>
+            <Link to="/rq-super-heroes">React-Query Super Heroes</Link>
           </li>
         </ul>
       </nav>
