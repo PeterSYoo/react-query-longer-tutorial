@@ -6,6 +6,14 @@ interface Hero {
   name: string;
 }
 
+interface Results {
+  isLoading: {};
+  data: any;
+  isError: {};
+  error: any;
+  isFetching: {};
+}
+
 const fetchSuperHeroes = () => {
   return axios.get('http://localhost:4000/superheroes');
 };
@@ -14,9 +22,12 @@ const RQSuperHeroesPage = () => {
   // useQuery(1st arg, 2nd arg)
   // 1st argument - unique query key
   // 2nd argument - accepts a function that returns a promise, ex. get request to json server.
-  const { isLoading, data, isError } = useQuery(
+  const { isLoading, data, isError, error, isFetching }: Results = useQuery(
     'super-heroes',
-    fetchSuperHeroes
+    fetchSuperHeroes,
+    {
+      staleTime: 0,
+    }
   );
 
   if (isLoading) {
@@ -24,7 +35,7 @@ const RQSuperHeroesPage = () => {
   }
 
   if (isError) {
-    return <h2>Error...</h2>;
+    return <h2>{error.message}</h2>;
   }
 
   return (

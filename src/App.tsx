@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './App.css';
 import { QueryClientProvider, QueryClient } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import HomePage from './components/home.page';
 import RQSuperHeroesPage from './components/rqsuperheroes.page';
 import SuperHeroesPage from './components/superheroes.page';
@@ -21,6 +22,7 @@ function App() {
             <Route path="/rq-super-heroes" element={<RQSuperHeroesPage />} />
           </Routes>
         </BrowserRouter>
+        <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
       </QueryClientProvider>
     </>
   );
