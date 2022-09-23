@@ -27,6 +27,8 @@ const RQSuperHeroesPage = () => {
     fetchSuperHeroes,
     {
       staleTime: 0,
+      refetchOnMount: true,
+      refetchOnWindowFocus: true,
     }
   );
 
