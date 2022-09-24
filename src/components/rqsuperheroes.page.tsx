@@ -16,7 +16,7 @@ interface Results {
 }
 
 interface Data {
-  data: object;
+  data: any;
 }
 
 interface Error {
@@ -41,14 +41,19 @@ const RQSuperHeroesPage = () => {
   // 2nd argument - accepts a function that returns a promise, ex. get request to json server.
   const { isLoading, data, isError, error, isFetching, refetch }: Results =
     useQuery('super-heroes', fetchSuperHeroes, {
-      staleTime: 0,
-      refetchOnMount: true, //refetches on page load
-      refetchOnWindowFocus: true, //refetches on window focus
-      refetchInterval: 2000, //refetches every 2 seconds
-      refetchIntervalInBackground: true, //refetches even when browser isn't in focus
-      enabled: false, //disables automatic fetching of data
+      // staleTime: 0,
+      // refetchOnMount: true, //refetches on page load
+      // refetchOnWindowFocus: true, //refetches on window focus
+      // refetchInterval: 2000, //refetches every 2 seconds
+      // refetchIntervalInBackground: true, //refetches even when browser isn't in focus
+      // enabled: false, //disables automatic fetching of data
       onSuccess,
       onError,
+      select: (data) => {
+        //transform or select part of the data from the useQuery function
+        const superHeroNames = data.data.map((hero: any) => hero.name);
+        return superHeroNames;
+      },
     });
 
   if (isLoading || isFetching) {
@@ -64,8 +69,11 @@ const RQSuperHeroesPage = () => {
       <h2>React-Query Super Heroes</h2>
       {/* refetch fetches data */}
       <button onClick={refetch}>Fetch Heroes</button>
-      {data?.data.map((hero: Hero) => (
+      {/* {data?.data.map((hero: Hero) => (
         <div key={hero.name}>{hero.name}</div>
+      ))} */}
+      {data.map((heroName: any) => (
+        <div key={heroName}>{heroName}</div>
       ))}
     </div>
   );
