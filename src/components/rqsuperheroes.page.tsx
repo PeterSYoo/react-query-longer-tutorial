@@ -15,11 +15,27 @@ interface Results {
   refetch: () => void;
 }
 
+interface Data {
+  data: object;
+}
+
+interface Error {
+  error: object;
+}
+
 const fetchSuperHeroes = () => {
   return axios.get('http://localhost:4000/superheroes');
 };
 
 const RQSuperHeroesPage = () => {
+  const onSuccess = (data: Data) => {
+    console.log('Perform side effect after data fetching', data);
+  };
+
+  const onError = (error: Error) => {
+    console.log('Perform side effect after data fetching', error);
+  };
+
   // useQuery(1st arg, 2nd arg)
   // 1st argument - unique query key
   // 2nd argument - accepts a function that returns a promise, ex. get request to json server.
@@ -31,6 +47,8 @@ const RQSuperHeroesPage = () => {
       refetchInterval: 2000, //refetches every 2 seconds
       refetchIntervalInBackground: true, //refetches even when browser isn't in focus
       enabled: false, //disables automatic fetching of data
+      onSuccess,
+      onError,
     });
 
   if (isLoading || isFetching) {
