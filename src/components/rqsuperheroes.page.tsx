@@ -12,6 +12,7 @@ interface Results {
   isError: {};
   error: any;
   isFetching: {};
+  refetch: () => void;
 }
 
 const fetchSuperHeroes = () => {
@@ -22,17 +23,17 @@ const RQSuperHeroesPage = () => {
   // useQuery(1st arg, 2nd arg)
   // 1st argument - unique query key
   // 2nd argument - accepts a function that returns a promise, ex. get request to json server.
-  const { isLoading, data, isError, error, isFetching }: Results = useQuery(
-    'super-heroes',
-    fetchSuperHeroes,
-    {
+  const { isLoading, data, isError, error, isFetching, refetch }: Results =
+    useQuery('super-heroes', fetchSuperHeroes, {
       staleTime: 0,
-      refetchOnMount: true,
-      refetchOnWindowFocus: true,
-    }
-  );
+      refetchOnMount: true, //refetches on page load
+      refetchOnWindowFocus: true, //refetches on window focus
+      refetchInterval: 2000, //refetches every 2 seconds
+      refetchIntervalInBackground: true, //refetches even when browser isn't in focus
+      enabled: false, //disables automatic fetching of data
+    });
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <h2>Loading...</h2>;
   }
 
@@ -43,6 +44,8 @@ const RQSuperHeroesPage = () => {
   return (
     <div>
       <h2>React-Query Super Heroes</h2>
+      {/* refetch fetches data */}
+      <button onClick={refetch}>Fetch Heroes</button>
       {data?.data.map((hero: Hero) => (
         <div key={hero.name}>{hero.name}</div>
       ))}
