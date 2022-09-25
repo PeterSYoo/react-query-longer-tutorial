@@ -16,6 +16,12 @@ const Nav = () => {
             <Link to="/rq-super-heroes">React-Query Super Heroes</Link>
           </li>
           <li>
+            <Link to="/rq-parallel">RQ Parallel Query</Link>
+          </li>
+          <li>
+            <Link to="/rq-dynamic-parallel">RQ Dynamic Parallel Queries</Link>
+          </li>
+          <li>
             <Link to="/rq-homework">RQ Homework</Link>
           </li>
         </ul>
