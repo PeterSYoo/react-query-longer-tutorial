@@ -15,6 +15,9 @@ const Nav = () => {
           <li>
             <Link to="/rq-super-heroes">React-Query Super Heroes</Link>
           </li>
+          <li>
+            <Link to="/rq-homework">RQ Homework</Link>
+          </li>
         </ul>
       </nav>
     </div>

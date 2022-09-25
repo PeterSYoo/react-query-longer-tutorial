@@ -2,6 +2,7 @@ import React from 'react';
 // import { useQuery } from 'react-query';
 // import axios from 'axios';
 import useSuperHeroesData from '../hooks/useSuperHeroesData'; //custom query hook
+import { Link } from 'react-router-dom';
 
 interface Hero {
   name: string;
@@ -75,8 +76,10 @@ const RQSuperHeroesPage = () => {
       {/* {data?.data.map((hero: Hero) => (
         <div key={hero.name}>{hero.name}</div>
       ))} */}
-      {data.map((heroName: any) => (
-        <div key={heroName}>{heroName}</div>
+      {data?.data.map((hero: any) => (
+        <div key={hero.id}>
+          <Link to={`/rq-super-heroes/${hero.id}`}>{hero.name}</Link>
+        </div>
       ))}
     </div>
   );

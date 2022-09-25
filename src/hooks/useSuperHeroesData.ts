@@ -12,14 +12,14 @@ const useSuperHeroesData = (onSuccess: any, onError: any) => {
     // refetchOnWindowFocus: true, //refetches on window focus
     // refetchInterval: 2000, //refetches every 2 seconds
     // refetchIntervalInBackground: true, //refetches even when browser isn't in focus
-    // enabled: false, //disables automatic fetching of data
+    enabled: false,
     onSuccess,
     onError,
-    select: (data) => {
-      //transform or select part of the data from the useQuery function
-      const superHeroNames = data.data.map((hero: any) => hero.name);
-      return superHeroNames;
-    },
+    // select: (data) => {
+    //   //transform or select part of the data from the useQuery function
+    //   const superHeroNames = data.data.map((hero: any) => hero.name);
+    //   return superHeroNames;
+    // },
   });
 };
 

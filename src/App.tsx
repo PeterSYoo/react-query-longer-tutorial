@@ -5,8 +5,10 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import HomePage from './components/home.page';
 import RQSuperHeroesPage from './components/rqsuperheroes.page';
 import SuperHeroesPage from './components/superheroes.page';
+import RQHomework from './components/rqhomework.page';
 import Nav from './components/nav.components';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import RQSuperHero from './components/rqsuperhero.page';
 
 const queryClient = new QueryClient();
 
@@ -20,6 +22,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/super-heroes" element={<SuperHeroesPage />} />
             <Route path="/rq-super-heroes" element={<RQSuperHeroesPage />} />
+            <Route path="/rq-super-heroes/:heroId" element={<RQSuperHero />} />
+            <Route path="/rq-homework" element={<RQHomework />} />
           </Routes>
         </BrowserRouter>
         <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
