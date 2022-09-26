@@ -28,7 +28,7 @@ const Nav = () => {
             <Link to="/rq-paginated">RQ Paginated</Link>
           </li>
           <li>
-            <Link to="/rq-homework">RQ Homework</Link>
+            <Link to="/rq-infinite">RQ Infinite</Link>
           </li>
         </ul>
       </nav>
