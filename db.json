@@ -54,6 +54,16 @@
       "name": "test 2",
       "alterEgo": "2",
       "id": 11
+    },
+    {
+      "name": "qwe",
+      "alterEgo": "qwe",
+      "id": 12
+    },
+    {
+      "name": "qwe2",
+      "alterEgo": "qwe2",
+      "id": 13
     }
   ],
   "friends": [
