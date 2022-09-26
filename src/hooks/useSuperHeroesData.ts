@@ -30,16 +30,41 @@ export const useSuperHeroesData = (onSuccess: any, onError: any) => {
 export const useAddSuperHeroData = () => {
   const queryClient = useQueryClient();
   return useMutation(addSuperHero, {
-    onSuccess: (data: any) => {
-      // queryClient.invalidateQueries('super-heroes');
+    // onSuccess: (data: any) => {
+    //   // queryClient.invalidateQueries('super-heroes');
+    //   queryClient.setQueryData('super-heroes', (oldQueryData) => {
+    //     return {
+    //       // @ts-ignore
+    //       ...oldQueryData,
+    //       // @ts-ignore
+    //       data: [...oldQueryData.data, data.data],
+    //     };
+    //   });
+    // },
+    onMutate: async (newHero: any) => {
+      await queryClient.cancelQueries('super-heroes');
+      const previousHeroData = queryClient.getQueryData('super-heroes');
       queryClient.setQueryData('super-heroes', (oldQueryData) => {
         return {
           // @ts-ignore
           ...oldQueryData,
-          // @ts-ignore
-          data: [...oldQueryData.data, data.data],
+          data: [
+            // @ts-ignore
+            ...oldQueryData.data,
+            // @ts-ignore
+            { id: oldQueryData?.data?.length + 1, ...newHero },
+          ],
         };
       });
+      return {
+        previousHeroData,
+      };
+    },
+    onError: (_error, _hero, context: any) => {
+      queryClient.setQueryData('super-heroes', context.previousHeroData);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries('super-heroes');
     },
   });
 };

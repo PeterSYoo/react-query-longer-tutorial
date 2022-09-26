@@ -39,6 +39,21 @@
       "name": "test",
       "alterEgo": "test",
       "id": 8
+    },
+    {
+      "name": "Aquaman",
+      "alterEgo": "Arthur Curry",
+      "id": 9
+    },
+    {
+      "name": "Aquaman 2",
+      "alterEgo": "Arthur Curry 2",
+      "id": 10
+    },
+    {
+      "name": "test 2",
+      "alterEgo": "2",
+      "id": 11
     }
   ],
   "friends": [
